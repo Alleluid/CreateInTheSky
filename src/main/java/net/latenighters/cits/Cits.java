@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
 @Mod("cits")
 public class Cits
 {
+    public static final String MOD_ID = "cits";
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
 
@@ -37,6 +38,7 @@ public class Cits
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+        Registration.init();
     }
 
     private void setup(final FMLCommonSetupEvent event)
