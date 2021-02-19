@@ -4,6 +4,9 @@
   "block.cits.steamputer": "Steamputer",
 
   "item.cits.brass_gear": "Brass Gear",
+  "item.cits.dust_wood": "Sawdust",
+  "item.cits.wood_pulp": "Wood Pulp",
+  "item.cits.cardstock": "Cardstock",
 
   "item.cits.mobcard": "Punched Card"
 }

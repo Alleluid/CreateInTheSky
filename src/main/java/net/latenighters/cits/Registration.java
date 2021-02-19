@@ -33,6 +33,16 @@ public class Registration {
     public static final RegistryObject<Item> BRASS_GEAR = ITEMS.register("brass_gear", () ->
             new Item(new Item.Properties().group(ModSetup.ITEM_GROUP))
     );
+    public static final RegistryObject<Item> DUST_WOOD = ITEMS.register("dust_wood", () ->
+            new Item(new Item.Properties().group(ModSetup.ITEM_GROUP))
+    );
+    public static final RegistryObject<Item> WOOD_PULP = ITEMS.register("wood_pulp", () ->
+            new Item(new Item.Properties().group(ModSetup.ITEM_GROUP))
+    );
+    public static final RegistryObject<Item> CARDSTOCK = ITEMS.register("cardstock", () ->
+            new Item(new Item.Properties().group(ModSetup.ITEM_GROUP))
+    );
+
 
     // Fluid Registration
 
