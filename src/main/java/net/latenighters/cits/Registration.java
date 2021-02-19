@@ -1,9 +1,11 @@
 package net.latenighters.cits;
 
+import net.latenighters.cits.common.blocks.BlockSteamputer;
 import net.latenighters.cits.common.items.ItemMobCard;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.fluid.Fluid;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.fml.RegistryObject;
@@ -38,6 +40,8 @@ public class Registration {
     // Block Registration
 //    public static final RegistryObject<BlockGeodeMachine> GEODE_MACHINE_BLOCK = BLOCKS.register("geode_machine", BlockGeodeMachine::new);
 //    public static final RegistryObject<Item> GEODE_MACHINE_ITEM = ITEMS.register("geode_machine", () -> new BlockItem(GEODE_MACHINE_BLOCK.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
+    public static final RegistryObject<BlockSteamputer> STEAMPUTER_BLOCK = BLOCKS.register("steamputer", BlockSteamputer::new);
+    public static final RegistryObject<Item> STEAMPUTER_BLOCK_ITEM = ITEMS.register("steamputer", () -> new BlockItem(STEAMPUTER_BLOCK.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
 
     // Tile Entity Registration
 //    public static final RegistryObject<TileEntityType<TileGeodeMachine>> GEODE_MACHINE_TILE = TILES.register("geode_machine_tile", () -> TileEntityType.Builder.create(TileGeodeMachine::new, GEODE_MACHINE_BLOCK.get()).build(null));

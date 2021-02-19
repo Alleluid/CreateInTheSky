@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "cits:block/steamputer",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "cits:block/steamputer"
+    },
+    "facing=south": {
+      "model": "cits:block/steamputer",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "cits:block/steamputer",
+      "y": 270
+    }
+  }
+}
