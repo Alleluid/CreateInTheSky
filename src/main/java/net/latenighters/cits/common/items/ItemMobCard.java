@@ -3,10 +3,16 @@ package net.latenighters.cits.common.items;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Maps;
 import net.latenighters.cits.ModSetup;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
+import java.util.List;
 import java.util.Map;
 
 public class ItemMobCard extends Item {
@@ -24,6 +30,17 @@ public class ItemMobCard extends Item {
         this.secondaryColor = secondaryColor;
         this.typeIn = typeIn;
         EGGS.put(typeIn, this);
+    }
+
+    @Override
+    public String getTranslationKey() {return "item.cits.mobcard";}
+
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+        tooltip.add(this.typeIn.getName());
+        tooltip.add(new StringTextComponent("469"));
+        super.addInformation(stack, worldIn, tooltip, flagIn);
     }
 
     public int getColor(int tintIndex) {
