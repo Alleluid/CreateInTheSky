@@ -28,6 +28,9 @@ public class Registration {
 
     // Item Registration
 //    public static final RegistryObject<ItemGeode> INTACT_GEODE = ITEMS.register("intact_geode", ItemGeode::new);
+    public static final RegistryObject<Item> BRASS_GEAR = ITEMS.register("brass_gear", () ->
+            new Item(new Item.Properties().group(ModSetup.ITEM_GROUP))
+    );
 
     // Fluid Registration
 
