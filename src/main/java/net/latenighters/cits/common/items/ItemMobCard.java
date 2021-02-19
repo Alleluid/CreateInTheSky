@@ -8,7 +8,6 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
@@ -23,7 +22,6 @@ public class ItemMobCard extends Item {
 
     public ItemMobCard(EntityType<?> typeIn, int primaryColor, int secondaryColor) {
         super(new Properties()
-                .maxStackSize(1)
                 .group(ModSetup.ITEM_GROUP)
         );
         this.primaryColor = primaryColor;
@@ -39,7 +37,6 @@ public class ItemMobCard extends Item {
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add(this.typeIn.getName());
-        tooltip.add(new StringTextComponent("469"));
         super.addInformation(stack, worldIn, tooltip, flagIn);
     }
 

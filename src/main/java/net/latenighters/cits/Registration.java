@@ -1,7 +1,9 @@
 package net.latenighters.cits;
 
 import net.latenighters.cits.common.blocks.BlockSteamputer;
+import net.latenighters.cits.common.items.ItemCardstock;
 import net.latenighters.cits.common.items.ItemMobCard;
+import net.latenighters.cits.common.items.ItemPuncher;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.fluid.Fluid;
@@ -30,6 +32,8 @@ public class Registration {
 
     // Item Registration
 //    public static final RegistryObject<ItemGeode> INTACT_GEODE = ITEMS.register("intact_geode", ItemGeode::new);
+    public static final RegistryObject<ItemPuncher> PUNCHER = ITEMS.register("puncher", ItemPuncher::new);
+    public static final RegistryObject<ItemCardstock> CARDSTOCK = ITEMS.register("cardstock", ItemCardstock::new);
     public static final RegistryObject<Item> BRASS_GEAR = ITEMS.register("brass_gear", () ->
             new Item(new Item.Properties().group(ModSetup.ITEM_GROUP))
     );
@@ -37,9 +41,6 @@ public class Registration {
             new Item(new Item.Properties().group(ModSetup.ITEM_GROUP))
     );
     public static final RegistryObject<Item> WOOD_PULP = ITEMS.register("wood_pulp", () ->
-            new Item(new Item.Properties().group(ModSetup.ITEM_GROUP))
-    );
-    public static final RegistryObject<Item> CARDSTOCK = ITEMS.register("cardstock", () ->
             new Item(new Item.Properties().group(ModSetup.ITEM_GROUP))
     );
 
