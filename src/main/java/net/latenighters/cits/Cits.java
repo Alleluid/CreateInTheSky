@@ -24,7 +24,7 @@ public class Cits
 {
     public static final String MOD_ID = "cits";
     // Directly reference a log4j logger.
-    private static final Logger LOGGER = LogManager.getLogger();
+    public static final Logger LOGGER = LogManager.getLogger();
 
     public Cits() {
         // Register the setup method for modloading
