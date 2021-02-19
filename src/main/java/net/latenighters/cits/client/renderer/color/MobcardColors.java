@@ -1,6 +1,5 @@
 package net.latenighters.cits.client.renderer.color;
 
-import net.latenighters.cits.Cits;
 import net.latenighters.cits.common.items.ItemMobCard;
 import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraftforge.api.distmarker.Dist;
@@ -14,7 +13,6 @@ import static net.latenighters.cits.Cits.MOD_ID;
 public class MobcardColors {
     @SubscribeEvent
     public static void onColorHandlerEvent(ColorHandlerEvent.Item event) {
-        Cits.LOGGER.debug("Hello from ColorHandlerEvent");
         Iterable<ItemMobCard> mobcards = ItemMobCard.getMobcards();
         ItemColors itemColors = event.getItemColors();
         for (ItemMobCard card : mobcards) {
