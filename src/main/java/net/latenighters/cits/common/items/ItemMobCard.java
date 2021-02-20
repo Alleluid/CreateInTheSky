@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ItemMobCard extends Item {
-    private static final Map<EntityType<?>, ItemMobCard> EGGS = Maps.newIdentityHashMap();
+    private static final Map<EntityType<?>, ItemMobCard> CARDS = Maps.newIdentityHashMap();
     private final int primaryColor;
     private final int secondaryColor;
     private final EntityType<?> typeIn;
@@ -27,7 +27,7 @@ public class ItemMobCard extends Item {
         this.primaryColor = primaryColor;
         this.secondaryColor = secondaryColor;
         this.typeIn = typeIn;
-        EGGS.put(typeIn, this);
+        CARDS.put(typeIn, this);
     }
 
     @Override
@@ -44,9 +44,9 @@ public class ItemMobCard extends Item {
         return tintIndex == 0 ? this.primaryColor : this.secondaryColor;
     }
 
-    public static ItemMobCard getMobcard(@Nullable EntityType<?> type) { return EGGS.get(type); }
+    public static ItemMobCard getMobcard(@Nullable EntityType<?> type) { return CARDS.get(type); }
 
     public static Iterable<ItemMobCard> getMobcards() {
-        return Iterables.unmodifiableIterable(EGGS.values());
+        return Iterables.unmodifiableIterable(CARDS.values());
     }
 }
