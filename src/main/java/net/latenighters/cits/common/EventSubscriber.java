@@ -8,6 +8,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -16,6 +17,7 @@ import net.minecraftforge.fml.common.Mod;
 public class EventSubscriber {
     @SubscribeEvent
     public static void onLivingDeath(LivingDeathEvent event) {
+        // TODO: move to puncher class
         Entity entitySource = event.getSource().getTrueSource();
         EntityType<?> entityKilledType = event.getEntity().getType();
         if (entitySource instanceof PlayerEntity) {
@@ -33,5 +35,10 @@ public class EventSubscriber {
                 }
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void onLootLoad(LootTableLoadEvent event) {
+        MobCardHandler.mobCardOnLootLoad(event);
     }
 }

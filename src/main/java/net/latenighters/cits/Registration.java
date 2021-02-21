@@ -1,11 +1,10 @@
 package net.latenighters.cits;
 
+import net.latenighters.cits.common.MobCardHandler;
 import net.latenighters.cits.common.blocks.BlockSteamputer;
 import net.latenighters.cits.common.items.ItemCardstock;
-import net.latenighters.cits.common.items.ItemMobCard;
 import net.latenighters.cits.common.items.ItemPuncher;
 import net.minecraft.block.Block;
-import net.minecraft.entity.EntityType;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -28,6 +27,7 @@ public class Registration {
         ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         TILES.register(FMLJavaModLoadingContext.get().getModEventBus());
         FLUIDS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        MobCardHandler.mobCardsInit(ITEMS);
     }
 
     // Item Registration
@@ -58,8 +58,8 @@ public class Registration {
 //    public static final RegistryObject<TileEntityType<TileGeodeMachine>> GEODE_MACHINE_TILE = TILES.register("geode_machine_tile", () -> TileEntityType.Builder.create(TileGeodeMachine::new, GEODE_MACHINE_BLOCK.get()).build(null));
 
     // Mobcard Registration
-    public static final RegistryObject<ItemMobCard> BLAZE_MOB_CARD = ITEMS.register("blaze_mobcard", () ->
-            new ItemMobCard(EntityType.BLAZE, 16167425, 16775294));
-    public static final RegistryObject<ItemMobCard> CREEPER_MOB_CARD = ITEMS.register("creeper_mobcard", () ->
-            new ItemMobCard(EntityType.CREEPER, 894731, 0));
+//    public static final RegistryObject<ItemMobCard> BLAZE_MOB_CARD = ITEMS.register("blaze_mobcard", () ->
+//            new ItemMobCard(EntityType.BLAZE, 16167425, 16775294));
+//    public static final RegistryObject<ItemMobCard> CREEPER_MOB_CARD = ITEMS.register("creeper_mobcard", () ->
+//            new ItemMobCard(EntityType.CREEPER, 894731, 0));
 }

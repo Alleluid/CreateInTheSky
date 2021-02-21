@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ItemMobCard extends Item {
-    private static final Map<EntityType<?>, ItemMobCard> CARDS = Maps.newIdentityHashMap();
+    public static final Map<EntityType<?>, ItemMobCard> CARDS = Maps.newIdentityHashMap();
     private final int primaryColor;
     private final int secondaryColor;
     private final EntityType<?> typeIn;
@@ -27,7 +27,6 @@ public class ItemMobCard extends Item {
         this.primaryColor = primaryColor;
         this.secondaryColor = secondaryColor;
         this.typeIn = typeIn;
-        CARDS.put(typeIn, this);
     }
 
     @Override
