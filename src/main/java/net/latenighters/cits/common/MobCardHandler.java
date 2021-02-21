@@ -11,15 +11,44 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Map;
 
 public class MobCardHandler {
-    public static final String[] mobcardEntitiesStrings = new String[] {
+    public static final String[] mobcardEntitiesStringArray = new String[] {
             "minecraft:creeper",
+            "minecraft:chicken",
+            "minecraft:ocelot",
+            "minecraft:panda",
+            "minecraft:parrot",
+            "minecraft:phantom",
+            "minecraft:pig",
+            "minecraft:piglin",
+            "minecraft:polar_bear",
+            "minecraft:rabbit",
+            "minecraft:sheep",
+            "minecraft:shulker",
+            "minecraft:skeleton",
+            "minecraft:slime",
+            "minecraft:spider",
+            "minecraft:squid",
+            "minecraft:strider",
+            "minecraft:turtle",
+            "minecraft:witch",
+            "minecraft:wither_skeleton",
+            "minecraft:zombie",
+            "minecraft:zombified_piglin",
+            "minecraft:mooshroom",
+            "minecraft:llama",
+            "minecraft:horse",
+            "minecraft:guardian",
+            "minecraft:ghast",
+            "minecraft:enderman",
+            "minecraft:cow",
             "minecraft:blaze"
     };
-    private static final HashSet<String> mobcardEntities = new HashSet<>();
+    private static final HashSet<String> mobcardEntities = new HashSet<>(Arrays.asList(mobcardEntitiesStringArray));
 
     public static ArrayList<RegistryObject<ItemMobCard>> MOBCARD_REGISTRIES = new ArrayList<>();
 
@@ -30,11 +59,13 @@ public class MobCardHandler {
             EntityType<?> entityType = eggEntry.getKey();
             SpawnEggItem spawnEgg = eggEntry.getValue();
 
-            ItemMobCard newCard = new ItemMobCard(entityType, spawnEgg.getColor(0), spawnEgg.getColor(1));
-            String name = entityType.getRegistryName().getPath().toLowerCase();
-            MOBCARD_REGISTRIES.add(itemDeferredRegister.register(String.format("%s_mobcard", name), () -> newCard));
-            ItemMobCard.CARDS.put(entityType, newCard);
-
+            String entityRegistryName = entityType.getRegistryName().toString();
+            if (mobcardEntities.contains(entityRegistryName)) {
+                ItemMobCard newCard = new ItemMobCard(entityType, spawnEgg.getColor(0), spawnEgg.getColor(1));
+                String name = entityType.getRegistryName().getPath();
+                MOBCARD_REGISTRIES.add(itemDeferredRegister.register(String.format("%s_mobcard", name), () -> newCard));
+                ItemMobCard.CARDS.put(entityType, newCard);
+            }
         }
 
     }
