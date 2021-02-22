@@ -4,20 +4,19 @@ import com.simibubi.create.Create;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.repack.registrate.util.entry.BlockEntry;
 import com.simibubi.create.repack.registrate.util.entry.TileEntityEntry;
-import com.simibubi.create.foundation.data.ModelGen;
 import net.latenighters.cits.common.MobCardHandler;
-import net.latenighters.cits.common.blocks.jukebox.BlockJukebox;
 import net.latenighters.cits.common.blocks.BlockSteamputer;
+import net.latenighters.cits.common.blocks.jukebox.BlockJukebox;
 import net.latenighters.cits.common.blocks.jukebox.RendererJukebox;
 import net.latenighters.cits.common.blocks.jukebox.TileJukebox;
 import net.latenighters.cits.common.items.ItemCardstock;
+import net.latenighters.cits.common.items.ItemMortarPestle;
 import net.latenighters.cits.common.items.ItemPuncher;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.tileentity.JukeboxTileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -48,6 +47,7 @@ public class Registration {
 //    public static final RegistryObject<ItemGeode> INTACT_GEODE = ITEMS.register("intact_geode", ItemGeode::new);
     public static final RegistryObject<ItemPuncher> PUNCHER = ITEMS.register("puncher", ItemPuncher::new);
     public static final RegistryObject<ItemCardstock> CARDSTOCK = ITEMS.register("cardstock", ItemCardstock::new);
+    public static final RegistryObject<ItemMortarPestle> MORTAR_PESTLE = ITEMS.register("mortar_pestle", ItemMortarPestle::new);
     public static final RegistryObject<Item> BRASS_GEAR = ITEMS.register("brass_gear", () ->
             new Item(new Item.Properties().group(ModSetup.ITEM_GROUP))
     );
@@ -55,6 +55,15 @@ public class Registration {
             new Item(new Item.Properties().group(ModSetup.ITEM_GROUP))
     );
     public static final RegistryObject<Item> WOOD_PULP = ITEMS.register("wood_pulp", () ->
+            new Item(new Item.Properties().group(ModSetup.ITEM_GROUP))
+    );
+    public static final RegistryObject<Item> CALAMINE = ITEMS.register("calamine", () ->
+            new Item(new Item.Properties().group(ModSetup.ITEM_GROUP))
+    );
+    public static final RegistryObject<Item> CALAMINE_CHARCOAL_MIX = ITEMS.register("calamine_charcoal_mix", () ->
+            new Item(new Item.Properties().group(ModSetup.ITEM_GROUP))
+    );
+    public static final RegistryObject<Item> MALACHITE = ITEMS.register("malachite", () ->
             new Item(new Item.Properties().group(ModSetup.ITEM_GROUP))
     );
 

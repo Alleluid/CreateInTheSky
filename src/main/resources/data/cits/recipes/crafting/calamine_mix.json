@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "cits:calamine"
+    },
+    {
+      "item": "cits:calamine"
+    },
+    {
+      "item": "cits:calamine"
+    },
+    {
+      "item": "cits:calamine"
+    },
+    {
+      "item": "minecraft:charcoal"
+    }
+  ],
+  "result": {
+    "item": "cits:calamine_charcoal_mix",
+    "count": 8
+  }
+}

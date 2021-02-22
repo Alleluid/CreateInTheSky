@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "cits:calamine_charcoal_mix"
+  },
+  "result": "create:zinc_nugget",
+  "experience": 0.1,
+  "cookingtime": 100
+}
