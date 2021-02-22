@@ -1,0 +1,15 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    [
+      {
+        "item": "cits:wood_pulp"
+      }
+    ]
+  ],
+  "results": [
+    {
+      "item": "cits:cardstock"
+    }
+  ]
+}
