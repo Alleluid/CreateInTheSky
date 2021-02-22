@@ -1,0 +1,13 @@
+{
+  "type": "create:splashing",
+  "ingredients": [
+    {
+      "item": "cits:dust_wood"
+    }
+  ],
+  "results": [
+    {
+      "item": "cits:wood_pulp"
+    }
+  ]
+}
