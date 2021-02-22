@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "cits:block/jukebox",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "cits:block/jukebox"
+    },
+    "facing=south": {
+      "model": "cits:block/jukebox",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "cits:block/jukebox",
+      "y": 270
+    }
+  }
+}

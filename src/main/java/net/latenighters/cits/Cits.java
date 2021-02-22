@@ -1,5 +1,7 @@
 package net.latenighters.cits;
 
+import com.simibubi.create.foundation.data.CreateRegistrate;
+import com.simibubi.create.repack.registrate.util.NonNullLazyValue;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -25,7 +27,7 @@ public class Cits
     public static final String MOD_ID = "cits";
     // Directly reference a log4j logger.
     public static final Logger LOGGER = LogManager.getLogger();
-
+    private static final NonNullLazyValue<CreateRegistrate> registrate = CreateRegistrate.lazy(Cits.MOD_ID);
     public Cits() {
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
@@ -82,5 +84,9 @@ public class Cits
             // register a new block here
             LOGGER.info("HELLO from Register Block");
         }
+    }
+
+    public static CreateRegistrate registrate() {
+        return registrate.get();
     }
 }
