@@ -3,6 +3,7 @@ package net.latenighters.cits.common.items;
 import com.simibubi.create.AllRecipeTypes;
 import com.simibubi.create.content.contraptions.components.millstone.MillingRecipe;
 import net.latenighters.cits.ModSetup;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -13,6 +14,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.wrapper.RecipeWrapper;
 
+import javax.annotation.Nonnull;
 import java.util.Optional;
 
 public class ItemMortarPestle extends Item {
@@ -21,11 +23,8 @@ public class ItemMortarPestle extends Item {
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
+    public ActionResult<ItemStack> onItemRightClick(@Nonnull World worldIn, PlayerEntity playerIn, @Nonnull Hand handIn) {
         // TODO: Polish this up to be like sandpaper.
-
-        //grindingRecipes.put("create:limestone", "cits:calamine");
-        //grindingRecipes.put("create:weathered_limestone", "cits:malachite");
 
         ItemStack itemStack = playerIn.getHeldItem(handIn);
         ActionResult<ItemStack> FAIL = new ActionResult<>(ActionResultType.FAIL, itemStack);
@@ -39,7 +38,9 @@ public class ItemMortarPestle extends Item {
         } else if (!worldIn.isRemote) {
             itemInOtherHand.shrink(1);
             recipe.get().rollResults().forEach((item) -> {
-                playerIn.addItemStackToInventory(item);
+                ItemEntity itemEntity = playerIn.dropItem(item, false, true);
+                if (itemEntity != null)
+                    itemEntity.setPickupDelay(5);
             });
         }
         return super.onItemRightClick(worldIn, playerIn, handIn);
