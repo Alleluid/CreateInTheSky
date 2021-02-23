@@ -9,11 +9,14 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.util.NonNullList;
-import net.minecraftforge.common.Tags;
+import net.minecraft.world.World;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.player.BonemealEvent;
 import net.minecraftforge.event.world.BlockEvent;
+import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -30,10 +33,9 @@ public class EventSubscriber {
             if (player.getHeldItemOffhand().getItem() instanceof ItemPuncher) {
                 NonNullList<ItemStack> mainInv = player.inventory.mainInventory;
 
-                for (int i=0; i<mainInv.size(); i++) {
-                    ItemStack stack = mainInv.get(i);
+                for (ItemStack stack : mainInv) {
                     if (stack.getItem() instanceof ItemCardstock) {
-                        if (player.inventory.addItemStackToInventory(new ItemStack(ItemMobCard.getMobcard(entityKilledType))) )
+                        if (player.inventory.addItemStackToInventory(new ItemStack(ItemMobCard.getMobcard(entityKilledType))))
                             stack.shrink(1);
                     }
                 }
@@ -51,5 +53,17 @@ public class EventSubscriber {
     {
         if(event.getNewState().getBlock().equals(Blocks.STONE))
             event.setNewState(Blocks.ANDESITE.getDefaultState());
+    }
+
+    @SubscribeEvent
+    public static void onBonemealEvent(BonemealEvent event) {
+        World world = event.getWorld();
+        BlockState blockState = event.getBlock();
+        if (blockState.getBlock().equals(Blocks.SEAGRASS)) {
+            if (blockState.getFluidState().isTagged(FluidTags.WATER) && !world.isRemote) {
+                world.setBlockState(event.getPos(), Blocks.KELP.getDefaultState());
+                event.setResult(Event.Result.ALLOW);
+            }
+        }
     }
 }
