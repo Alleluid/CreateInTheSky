@@ -1,0 +1,15 @@
+{
+  "type": "create:milling",
+  "ingredients": [
+    {
+      "item": "create:weathered_limestone"
+    }
+  ],
+  "results": [
+    {
+      "item": "cits:malachite",
+      "count": 1
+    }
+  ],
+  "processingTime": 100
+}
