@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "NZN",
+    "ZAZ",
+    "NZN"
+  ],
+  "key": {
+    "A": {
+      "item": "create:andesite_alloy"
+    },
+    "Z": {
+      "tag": "forge:ingots/zinc"
+    },
+    "N": {
+      "tag": "forge:nuggets/zinc"
+    }
+  },
+  "result": {
+    "item": "create:propeller"
+  }
+}

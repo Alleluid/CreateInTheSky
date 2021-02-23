@@ -11,14 +11,11 @@
       "item": "cits:calamine"
     },
     {
-      "item": "cits:calamine"
-    },
-    {
       "item": "minecraft:charcoal"
     }
   ],
   "result": {
     "item": "cits:calamine_charcoal_mix",
-    "count": 8
+    "count": 2
   }
 }
