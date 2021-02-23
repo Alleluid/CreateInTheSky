@@ -8,8 +8,7 @@
   "results": [
     {
       "item": "minecraft:dirt",
-      "count": 1,
-      "chance": 0.75
+      "count": 1
     }
   ],
   "processingTime": 100
