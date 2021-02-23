@@ -3,11 +3,9 @@ package net.latenighters.cits.common.items;
 import com.simibubi.create.AllRecipeTypes;
 import com.simibubi.create.content.contraptions.components.millstone.MillingRecipe;
 import net.latenighters.cits.ModSetup;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.FluidState;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
@@ -16,6 +14,8 @@ import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.wrapper.RecipeWrapper;
 
@@ -46,13 +46,18 @@ public class ItemMortarPestle extends Item {
         World world = context.getWorld();
         BlockPos pos = context.getPos();
         BlockState blockState = world.getBlockState(pos);
+        PlayerEntity player = context.getPlayer();
 
         boolean recipeResult = preformRecipe(context);
 
-        if (recipeResult){
-            FluidState fluidState = world.getFluidState(pos);
-            world.playEvent(2001, pos, Block.getStateId(blockState)); // Play block break effects (I think)
-            world.setBlockState(pos, fluidState.getBlockState(), 3); // flags | 1: block update, 2: send to clients. TODO: Block update not working..?
+        if (recipeResult && blockState.getBlockHardness(world, pos) != -1.0){
+            BlockEvent.BreakEvent e = new BlockEvent.BreakEvent(world, pos, blockState, player);
+            if (!MinecraftForge.EVENT_BUS.post(e)) {
+                if (player != null) {
+                    blockState.getBlock().onBlockHarvested(world, pos, blockState, player);
+                }
+                world.removeBlock(pos, false);
+            }
         }
         return super.onItemUse(context);
     }
