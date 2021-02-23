@@ -3,13 +3,17 @@ package net.latenighters.cits.common;
 import net.latenighters.cits.common.items.ItemCardstock;
 import net.latenighters.cits.common.items.ItemMobCard;
 import net.latenighters.cits.common.items.ItemPuncher;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -40,5 +44,12 @@ public class EventSubscriber {
     @SubscribeEvent
     public static void onLootLoad(LootTableLoadEvent event) {
         MobCardHandler.mobCardOnLootLoad(event);
+    }
+
+    @SubscribeEvent
+    public static void onFluidPlaceBlockEvent(BlockEvent.FluidPlaceBlockEvent event)
+    {
+        if(event.getNewState().getBlock().equals(Blocks.STONE))
+            event.setNewState(Blocks.ANDESITE.getDefaultState());
     }
 }
