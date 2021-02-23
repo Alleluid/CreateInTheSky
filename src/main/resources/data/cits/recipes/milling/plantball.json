@@ -1,0 +1,16 @@
+{
+  "type": "create:milling",
+  "ingredients": [
+    {
+      "item": "cits:plant_ball"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:dirt",
+      "count": 1,
+      "chance": 0.75
+    }
+  ],
+  "processingTime": 100
+}
