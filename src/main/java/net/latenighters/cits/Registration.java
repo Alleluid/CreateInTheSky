@@ -26,6 +26,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 import static net.latenighters.cits.Cits.MOD_ID;
 
+@SuppressWarnings("unused")
 public class Registration {
     private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MOD_ID);
     private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);

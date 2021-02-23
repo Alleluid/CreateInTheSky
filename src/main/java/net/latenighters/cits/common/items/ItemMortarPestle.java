@@ -28,6 +28,7 @@ public class ItemMortarPestle extends Item {
     }
 
     @Override
+    @Nonnull
     public ActionResult<ItemStack> onItemRightClick(@Nonnull World worldIn, PlayerEntity playerIn, @Nonnull Hand handIn) {
         // TODO: Polish this up to be like sandpaper.
 
@@ -42,6 +43,7 @@ public class ItemMortarPestle extends Item {
     }
 
     @Override
+    @Nonnull
     public ActionResultType onItemUse(@Nonnull ItemUseContext context) {
         World world = context.getWorld();
         BlockPos pos = context.getPos();

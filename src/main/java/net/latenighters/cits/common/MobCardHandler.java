@@ -50,7 +50,7 @@ public class MobCardHandler {
     };
     private static final HashSet<String> mobcardEntities = new HashSet<>(Arrays.asList(mobcardEntitiesStringArray));
 
-    public static ArrayList<RegistryObject<ItemMobCard>> MOBCARD_REGISTRIES = new ArrayList<>();
+    public static final ArrayList<RegistryObject<ItemMobCard>> MOBCARD_REGISTRIES = new ArrayList<>();
 
     public static void mobCardsInit(DeferredRegister<Item> itemDeferredRegister) {
         // Occurs during registration at game load
