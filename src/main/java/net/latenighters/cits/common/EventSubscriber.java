@@ -74,7 +74,6 @@ public class EventSubscriber {
                         item
                 );
             }
-                event.setCanceled(recipePreformed);
         }
     }
 
