@@ -59,7 +59,7 @@ public class ItemMortarPestle extends Item {
         return super.onItemUse(context);
     }
 
-    private boolean preformRecipe(World worldIn, PlayerEntity playerIn, Item inputItem) {
+    public boolean preformRecipe(World worldIn, PlayerEntity playerIn, Item inputItem) {
         RecipeWrapper recipeWrapper = new MillingInv(inputItem);
         Optional<MillingRecipe> recipe = AllRecipeTypes.MILLING.find(recipeWrapper, worldIn);
         if (recipe.isPresent()) {
