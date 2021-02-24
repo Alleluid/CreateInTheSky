@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PPP",
+    " SP",
+    " S "
+  ],
+  "key": {
+    "P": {
+      "item": "minecraft:polished_andesite"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "cits:skytool"
+  }
+}
