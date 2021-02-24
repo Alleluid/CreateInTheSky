@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "PPP",
-    " SP",
+    "pSa",
     " S "
   ],
   "key": {
@@ -11,6 +11,12 @@
     },
     "S": {
       "item": "minecraft:stick"
+    },
+    "p": {
+      "item": "minecraft:stone_pickaxe"
+    },
+    "a": {
+      "item": "minecraft:stone_axe"
     }
   },
   "result": {
