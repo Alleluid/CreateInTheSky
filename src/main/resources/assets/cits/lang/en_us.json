@@ -15,5 +15,7 @@
   "item.cits.mortar_pestle": "Mortar & Pestle",
   "item.cits.plant_ball": "Plant Ball",
 
-  "item.cits.mobcard": "Punched Card"
+  "item.cits.mobcard": "Punched Card",
+
+  "tooltip.cits.andesite": "Andesite is now generated as stone usually is, by lava flowing onto water."
 }
