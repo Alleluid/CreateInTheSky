@@ -2,7 +2,6 @@ package net.latenighters.cits.common;
 
 import net.latenighters.cits.common.items.ItemCardstock;
 import net.latenighters.cits.common.items.ItemMobCard;
-import net.latenighters.cits.common.items.ItemMortarPestle;
 import net.latenighters.cits.common.items.ItemPuncher;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -13,7 +12,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.Hand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
@@ -21,14 +19,13 @@ import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber
-public class EventSubscriber {
+public class EventSubscriber { // TODO: Move logic into item/block classes when possible.
     @SubscribeEvent
     public static void onToolTip(ItemTooltipEvent event) {
         Item item = event.getItemStack().getItem();
@@ -70,24 +67,6 @@ public class EventSubscriber {
     {
         if(event.getNewState().getBlock().equals(Blocks.STONE))
             event.setNewState(Blocks.ANDESITE.getDefaultState());
-    }
-
-    @SubscribeEvent
-    public static void onPlayerPickupItem(PlayerEvent.ItemPickupEvent event) {
-        Item offhandItem = event.getPlayer().getHeldItem(Hand.OFF_HAND).getItem();
-        if (offhandItem instanceof ItemMortarPestle) {
-            // TODO: Add animation here?
-            Item item = event.getStack().getItem();
-            int count = event.getStack().getCount();
-            boolean recipePreformed = false;
-            for (int i=0; i < count; i++) {
-                recipePreformed = ((ItemMortarPestle) offhandItem).preformRecipe(
-                        event.getPlayer().world,
-                        event.getPlayer(),
-                        item
-                );
-            }
-        }
     }
 
     @SubscribeEvent
