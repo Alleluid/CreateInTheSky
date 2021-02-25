@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "create:scoria_cobblestone"
+  },
+  "result": "create:natural_scoria",
+  "experience": 0.1,
+  "cookingtime": 100
+}

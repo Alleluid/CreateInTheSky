@@ -2,13 +2,14 @@
   "type": "create:milling",
   "ingredients": [
     {
-      "item": "create:weathered_limestone"
+      "item": "minecraft:jungle_leaves"
     }
   ],
   "results": [
     {
-      "item": "cits:malachite",
-      "count": 1
+      "item": "minecraft:cocoa_beans",
+      "count": 1,
+      "chance": 0.01
     }
   ],
   "processingTime": 100
