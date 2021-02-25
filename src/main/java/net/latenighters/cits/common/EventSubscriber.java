@@ -1,18 +1,11 @@
 package net.latenighters.cits.common;
 
-import net.latenighters.cits.common.items.ItemCardstock;
-import net.latenighters.cits.common.items.ItemMobCard;
 import net.latenighters.cits.common.items.ItemPuncher;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.event.LootTableLoadEvent;
@@ -25,7 +18,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber
-public class EventSubscriber { // TODO: Move logic into item/block classes when possible.
+public class EventSubscriber { // Move logic into existing classes when possible.
     @SubscribeEvent
     public static void onToolTip(ItemTooltipEvent event) {
         Item item = event.getItemStack().getItem();
@@ -38,23 +31,7 @@ public class EventSubscriber { // TODO: Move logic into item/block classes when 
 
     @SubscribeEvent
     public static void onLivingDeath(LivingDeathEvent event) {
-        // TODO: move to puncher class
-        Entity entitySource = event.getSource().getTrueSource();
-        EntityType<?> entityKilledType = event.getEntity().getType();
-        if (entitySource instanceof PlayerEntity) {
-            PlayerEntity player = (PlayerEntity) entitySource;
-
-            if (player.getHeldItemOffhand().getItem() instanceof ItemPuncher) {
-                NonNullList<ItemStack> mainInv = player.inventory.mainInventory;
-
-                for (ItemStack stack : mainInv) {
-                    if (stack.getItem() instanceof ItemCardstock) {
-                        if (player.inventory.addItemStackToInventory(new ItemStack(ItemMobCard.getMobcard(entityKilledType))))
-                            stack.shrink(1);
-                    }
-                }
-            }
-        }
+        ItemPuncher.onLivingDeath(event);
     }
 
     @SubscribeEvent
@@ -71,13 +48,15 @@ public class EventSubscriber { // TODO: Move logic into item/block classes when 
 
     @SubscribeEvent
     public static void onBonemealEvent(BonemealEvent event) {
+
         World world = event.getWorld();
         BlockState blockState = event.getBlock();
         if (blockState.getBlock().equals(Blocks.SEAGRASS)) {
-            if (blockState.getFluidState().isTagged(FluidTags.WATER) && !world.isRemote) {
+            if (!world.isRemote && blockState.getFluidState().isTagged(FluidTags.WATER)) {
                 world.setBlockState(event.getPos(), Blocks.KELP.getDefaultState());
                 event.setResult(Event.Result.ALLOW);
             }
         }
     }
 }
+
