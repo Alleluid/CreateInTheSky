@@ -17,5 +17,7 @@
 
   "item.cits.mobcard": "Punched Card",
 
-  "tooltip.cits.andesite": "Andesite is now generated as stone usually is, by lava flowing onto water."
+  "tooltip.cits.hold_shift": "[Hold Sneak]",
+  "tooltip.cits.andesite": "Andesite is able to be obtained as stone usually is, by lava flowing onto water.",
+  "tooltip.cits.scoria_cobblestone": "Scoria is able to be obtained by liquid chocolate interacting with lava."
 }
