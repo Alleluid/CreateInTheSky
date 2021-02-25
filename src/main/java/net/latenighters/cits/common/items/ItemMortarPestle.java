@@ -7,7 +7,6 @@ import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUseContext;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.NonNullList;
@@ -59,14 +58,6 @@ public class ItemMortarPestle extends Item {
             return true;
         }
         return false;
-    }
-
-    public boolean preformRecipe(World worldIn, PlayerEntity playerIn, Item inputItem){
-        return preformRecipe(worldIn, playerIn, new ItemStack(inputItem));
-    }
-
-    private boolean preformRecipe(ItemUseContext context) {
-        return preformRecipe(context.getWorld(), context.getPlayer(), context.getWorld().getBlockState(context.getPos()).getBlock().asItem());
     }
 
     private static class MillingInv extends RecipeWrapper {
