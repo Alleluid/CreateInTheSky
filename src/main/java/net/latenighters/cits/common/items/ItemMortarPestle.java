@@ -20,7 +20,6 @@ import java.util.Collection;
 import java.util.Optional;
 
 public class ItemMortarPestle extends Item {
-    private final NonNullList<ItemStack> recipeResultItems = NonNullList.create();
 
     public ItemMortarPestle() {
         super(new Properties().group(ModSetup.ITEM_GROUP).maxStackSize(1));
@@ -39,31 +38,15 @@ public class ItemMortarPestle extends Item {
 
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }
-/*
-    @Override
-    @Nonnull
-    public ActionResultType onItemUse(@Nonnull ItemUseContext context) {
-        World world = context.getWorld();
-        BlockPos pos = context.getPos();
-        BlockState blockState = world.getBlockState(pos);
-
-        boolean recipeResult = preformRecipe(context);
-        if (recipeResult){
-            FluidState fluidState = world.getFluidState(pos);
-            world.playEvent(2001, pos, Block.getStateId(blockState)); // Play block break effects
-            world.setBlockState(pos, fluidState.getBlockState(), 3); // flags | 1: block update, 2: send to clients.
-            world.markAndNotifyBlock(pos, world.getChunkAt(pos), blockState, fluidState.getBlockState(), 3, 512); // Have to call this manually for some reason.
-        }
-        return super.onItemUse(context);
-    }*/
 
     public boolean preformRecipe(World worldIn, PlayerEntity playerIn, ItemStack inputStack) {
+        NonNullList<ItemStack> recipeResultItems = NonNullList.create();
         RecipeWrapper recipeWrapper = new MillingInv(inputStack);
         Optional<MillingRecipe> recipe = AllRecipeTypes.MILLING.find(recipeWrapper, worldIn);
         if (recipe.isPresent()) {
             if (!worldIn.isRemote) {
                 for (int i=0; i < inputStack.getCount(); i++) {
-                    addItemsToList(recipe.get().rollResults());
+                    addItemsToList(recipe.get().rollResults(), recipeResultItems);
                 }
 
                 recipeResultItems.forEach((item) -> {
@@ -93,8 +76,7 @@ public class ItemMortarPestle extends Item {
         }
     }
 
-    private void addItemsToList(Collection<ItemStack> items) {
-        // Make sure this is only done server side.
+    private void addItemsToList(Collection<ItemStack> items, NonNullList<ItemStack> recipeResultItems) {
         for (ItemStack newItem : items) {
             final boolean[] itemHasBeenStored = {false}; // Why Java.
             recipeResultItems.forEach((storedItem) -> {
