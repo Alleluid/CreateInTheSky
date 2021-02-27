@@ -1,16 +1,27 @@
 @startuml
 'https://plantuml.com/object-diagram
-
+hide empty attributes
 'Objects
 ' Fluids
+object Lava
 object Water
 object Chocolate
 
 
 ' Blocks from Fluids
-object Cobblestone
-object Andesite
+object Cobblestone {
+    Lava from side
+}
+object Andesite {
+    Lava from above
+}
 object ScoriaCobblestone
+
+' Plants
+object Wood
+object Sapling
+object Wheat
+object Dirt
 
 ' Milling --*
 object Gravel
@@ -18,27 +29,38 @@ object Sand
 object LimeSand
 object Bonemeal
 object RawCalamine
+object SoulSand
 
 ' Washing --|>
 object Iron
 object Clay
+object NetherQuartz
+object Gold
 
 ' Smelting --o
+object Charcoal
 object NaturalScoria
 object Scoria
 object Limestone
+object Zinc
 
-' Crafting ..|>
+' Crafting ..o
 object DarkScoria {
-    Made with Black Dye
+    Black Dye
 }
+object CalamineMix
 
 'Arrows
 
-' Blocks from Fluids
-Water .. Cobblestone : Lava\nfrom side
-Water .. Andesite : Lava\nfrom above
-Chocolate .. ScoriaCobblestone : Lava
+' Blocks from Fluids and other misc interactions
+Lava .. Cobblestone
+Water .. Cobblestone
+Lava .. Andesite
+Water .. Andesite
+Lava .. ScoriaCobblestone
+Chocolate .. ScoriaCobblestone
+
+Bonemeal .. Wheat : Grass block
 
 
 ' Milling --*
@@ -46,22 +68,30 @@ Cobblestone --* Gravel
 Gravel --* Sand
 Sand --* LimeSand
 Limestone --* RawCalamine
-LimeSand --* Bonemeal : [7%]
+LimeSand --* Bonemeal
+DarkScoria --* SoulSand
 
 
 ' Washing --|>
-Gravel --|> Iron : [12%]
-Sand --|> Clay : [25%]
+Gravel --|> Iron
+Sand --|> Clay
+SoulSand --|> NetherQuartz
+SoulSand --|> Gold
 
 
 ' Smelting --o
+Wood --o Charcoal
 ScoriaCobblestone --o NaturalScoria
 NaturalScoria --o Scoria
 LimeSand --o Limestone
+CalamineMix --o Zinc
 
 
-' Crafting ..|>
-
-Scoria ..|> DarkScoria
+' Crafting ..o
+Scoria ..o DarkScoria
+Charcoal ..o CalamineMix
+RawCalamine ..o CalamineMix
+Wheat ..o Dirt
+Sapling ..o Dirt
 
 @enduml
