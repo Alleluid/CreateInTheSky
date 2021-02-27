@@ -1,6 +1,12 @@
 @startuml
 'https://plantuml.com/object-diagram
-hide empty attributes
+object ResourcesToAdd {
+ Redstone
+ Diamond (from coal?)
+ Lapis Lazuli
+ Emerald
+}
+
 'Objects
 ' Fluids
 object Lava
@@ -24,15 +30,24 @@ object Gravel
 object Sand
 object LimeSand
 object Limestone
+object WeatheredLimestone
 object Dirt
 object SoulSand
 
 ' Plants
+object OakTree
 object Wood
 object Sapling
 object Wheat
 object Bonemeal
 object Charcoal
+object Kelp
+object JungleLeaves
+object CocoaBeans
+
+' Mobs
+object Egg
+object Milk
 
 ' Minerals
 object Iron
@@ -40,10 +55,20 @@ object Clay
 object NetherQuartz
 object Gold
 object Zinc
+object Copper
 
 ' Misc
 object CalamineMix
 object RawCalamine
+object Malachite
+object SawDust
+object WoodPulp
+object Cardstock {
+ Mob drops
+}
+
+' Machine
+diamond Mixer
 
 'Arrows
 
@@ -55,8 +80,17 @@ Water .. Andesite
 Lava .. ScoriaCobblestone
 Chocolate .. ScoriaCobblestone
 
-Bonemeal .. Wheat : Grass block
+OakTree ...... Wood
+OakTree .. Sapling
+OakTree .. JungleLeaves : ???
+Bonemeal .. Wheat : Grass
+Bonemeal .. Kelp : Seagrass
+WoodPulp .. Cardstock : Press
 
+Egg .. Mixer
+Milk .. Mixer
+CocoaBeans .. Mixer
+Mixer .. Chocolate : Mixer
 
 ' Milling --*
 Cobblestone --* Gravel
@@ -65,13 +99,17 @@ Sand --* LimeSand
 Limestone --* RawCalamine
 LimeSand --* Bonemeal
 DarkScoria --* SoulSand
-
+Wood --* SawDust
+JungleLeaves --* CocoaBeans
+WeatheredLimestone --* Malachite
 
 ' Washing --|>
 Gravel --|> Iron
 Sand --|> Clay
 SoulSand --|> NetherQuartz
 SoulSand --|> Gold
+SawDust --|> WoodPulp
+Limestone --|> WeatheredLimestone
 
 
 ' Smelting --o
@@ -80,13 +118,16 @@ ScoriaCobblestone --o NaturalScoria
 NaturalScoria --o Scoria
 LimeSand --o Limestone
 CalamineMix --o Zinc
+Malachite --o Copper
 
 
-' Crafting ..o
-Scoria ..o DarkScoria
-Charcoal ..o CalamineMix
-RawCalamine ..o CalamineMix
-Wheat ..o Dirt
-Sapling ..o Dirt
+' Crafting -->
+Scoria --> DarkScoria
+Charcoal --> CalamineMix
+RawCalamine --> CalamineMix
+Wheat --> Dirt
+Sapling --> Dirt
+
+hide empty attributes
 
 @enduml
