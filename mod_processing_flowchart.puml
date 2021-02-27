@@ -1,6 +1,7 @@
 @startuml
 'https://plantuml.com/object-diagram
 
+'Objects
 ' Fluids
 object Water
 object Chocolate
@@ -11,11 +12,6 @@ object Cobblestone
 object Andesite
 object ScoriaCobblestone
 
-Water .. Cobblestone : Lava\nfrom side
-Water .. Andesite : Lava\nfrom above
-Chocolate .. ScoriaCobblestone : Lava
-
-
 ' Milling --*
 object Gravel
 object Sand
@@ -23,35 +19,49 @@ object LimeSand
 object Bonemeal
 object RawCalamine
 
-Cobblestone --* Gravel
-Gravel --* Sand
-Sand --* LimeSand
-Limestone --* RawCalamine
-
-
 ' Washing --|>
 object Iron
 object Clay
-
-LimeSand --* Bonemeal : [7%]
-Gravel --|> Iron : [12%]
-Sand --|> Clay : [25%]
-
 
 ' Smelting --o
 object NaturalScoria
 object Scoria
 object Limestone
 
+' Crafting ..|>
+object DarkScoria {
+    Made with Black Dye
+}
+
+'Arrows
+
+' Blocks from Fluids
+Water .. Cobblestone : Lava\nfrom side
+Water .. Andesite : Lava\nfrom above
+Chocolate .. ScoriaCobblestone : Lava
+
+
+' Milling --*
+Cobblestone --* Gravel
+Gravel --* Sand
+Sand --* LimeSand
+Limestone --* RawCalamine
+LimeSand --* Bonemeal : [7%]
+
+
+' Washing --|>
+Gravel --|> Iron : [12%]
+Sand --|> Clay : [25%]
+
+
+' Smelting --o
 ScoriaCobblestone --o NaturalScoria
 NaturalScoria --o Scoria
 LimeSand --o Limestone
 
 
 ' Crafting ..|>
-object DarkScoria {
-    Made with Black Dye
-}
 
 Scoria ..|> DarkScoria
+
 @enduml
