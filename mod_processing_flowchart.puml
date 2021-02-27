@@ -7,8 +7,7 @@ object Lava
 object Water
 object Chocolate
 
-
-' Blocks from Fluids
+' Blocks
 object Cobblestone {
     Lava from side
 }
@@ -16,39 +15,35 @@ object Andesite {
     Lava from above
 }
 object ScoriaCobblestone
+object NaturalScoria
+object Scoria
+object DarkScoria {
+    Black Dye
+}
+object Gravel
+object Sand
+object LimeSand
+object Limestone
+object Dirt
+object SoulSand
 
 ' Plants
 object Wood
 object Sapling
 object Wheat
-object Dirt
-
-' Milling --*
-object Gravel
-object Sand
-object LimeSand
 object Bonemeal
-object RawCalamine
-object SoulSand
+object Charcoal
 
-' Washing --|>
+' Minerals
 object Iron
 object Clay
 object NetherQuartz
 object Gold
-
-' Smelting --o
-object Charcoal
-object NaturalScoria
-object Scoria
-object Limestone
 object Zinc
 
-' Crafting ..o
-object DarkScoria {
-    Black Dye
-}
+' Misc
 object CalamineMix
+object RawCalamine
 
 'Arrows
 
