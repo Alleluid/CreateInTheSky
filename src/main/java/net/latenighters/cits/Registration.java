@@ -44,7 +44,6 @@ public class Registration {
     }
 
     // Item Registration
-//    public static final RegistryObject<ItemGeode> INTACT_GEODE = ITEMS.register("intact_geode", ItemGeode::new);
     public static final RegistryObject<ItemPuncher> PUNCHER = ITEMS.register("puncher", ItemPuncher::new);
     public static final RegistryObject<ItemCardstock> CARDSTOCK = ITEMS.register("cardstock", ItemCardstock::new);
     public static final RegistryObject<ItemMortarPestle> MORTAR_PESTLE = ITEMS.register("mortar_pestle", ItemMortarPestle::new);
@@ -74,8 +73,6 @@ public class Registration {
 
 
     // Block Registration
-//    public static final RegistryObject<BlockGeodeMachine> GEODE_MACHINE_BLOCK = BLOCKS.register("geode_machine", BlockGeodeMachine::new);
-//    public static final RegistryObject<Item> GEODE_MACHINE_ITEM = ITEMS.register("geode_machine", () -> new BlockItem(GEODE_MACHINE_BLOCK.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
     public static final RegistryObject<BlockSteamputer> STEAMPUTER_BLOCK = BLOCKS.register("steamputer", BlockSteamputer::new);
     public static final RegistryObject<Item> STEAMPUTER_BLOCK_ITEM = ITEMS.register("steamputer", () -> new BlockItem(STEAMPUTER_BLOCK.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
     public static final RegistryObject<BlockMobEgg> MOB_EGG_BLOCK = BLOCKS.register("weird_egg", BlockMobEgg::new);
@@ -103,10 +100,4 @@ public class Registration {
             .renderer(()-> RendererJukebox::new)
             .register();
 
-
-    // Mobcard Registration
-//    public static final RegistryObject<ItemMobCard> BLAZE_MOB_CARD = ITEMS.register("blaze_mobcard", () ->
-//            new ItemMobCard(EntityType.BLAZE, 16167425, 16775294));
-//    public static final RegistryObject<ItemMobCard> CREEPER_MOB_CARD = ITEMS.register("creeper_mobcard", () ->
-//            new ItemMobCard(EntityType.CREEPER, 894731, 0));
 }
