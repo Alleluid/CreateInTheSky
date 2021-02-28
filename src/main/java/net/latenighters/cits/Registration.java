@@ -5,6 +5,7 @@ import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.repack.registrate.util.entry.BlockEntry;
 import com.simibubi.create.repack.registrate.util.entry.TileEntityEntry;
 import net.latenighters.cits.common.MobCardHandler;
+import net.latenighters.cits.common.blocks.BlockMobEgg;
 import net.latenighters.cits.common.blocks.BlockSteamputer;
 import net.latenighters.cits.common.blocks.jukebox.BlockJukebox;
 import net.latenighters.cits.common.blocks.jukebox.RendererJukebox;
@@ -82,6 +83,8 @@ public class Registration {
 //    public static final RegistryObject<Item> GEODE_MACHINE_ITEM = ITEMS.register("geode_machine", () -> new BlockItem(GEODE_MACHINE_BLOCK.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
     public static final RegistryObject<BlockSteamputer> STEAMPUTER_BLOCK = BLOCKS.register("steamputer", BlockSteamputer::new);
     public static final RegistryObject<Item> STEAMPUTER_BLOCK_ITEM = ITEMS.register("steamputer", () -> new BlockItem(STEAMPUTER_BLOCK.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
+    public static final RegistryObject<BlockMobEgg> MOB_EGG_BLOCK = BLOCKS.register("weird_egg", BlockMobEgg::new);
+    public static final RegistryObject<Item> MOB_EGG_BLOCK_ITEM = ITEMS.register("weird_egg", () -> new BlockItem(MOB_EGG_BLOCK.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
     //public static final RegistryObject<BlockJukebox> JUKEBOX_BLOCK = BLOCKS.register("jukebox", BlockJukebox::new);
     //public static final RegistryObject<Item> JUKEBOX_BLOCK_ITEM = ITEMS.register("jukebox", () -> new BlockItem(JUKEBOX_BLOCK.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
 

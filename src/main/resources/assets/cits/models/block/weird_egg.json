@@ -1,0 +1,7 @@
+{
+  "parent": "block/dragon_egg",
+  "textures": {
+    "particle": "minecraft:block/cobblestone",
+    "all": "minecraft:block/cobblestone"
+  }
+}
