@@ -5,6 +5,7 @@ object ResourcesToAdd {
  Diamond (from coal?)
  Lapis Lazuli
  Emerald
+ SugarCane
 }
 
 'Objects
@@ -44,9 +45,10 @@ object Charcoal
 object Kelp
 object JungleLeaves
 object CocoaBeans
+object SugarCane
+object Sugar
 
 ' Mobs
-object Egg
 object Milk
 
 ' Minerals
@@ -91,7 +93,7 @@ Bonemeal .. Wheat : Grass
 Bonemeal .. Kelp : Seagrass
 WoodPulp .. Cardstock : Press
 
-Egg .. Chocolate
+Sugar .. Chocolate
 Milk .. Chocolate
 CocoaBeans .. Chocolate
 Chocolate : Mixer
@@ -127,6 +129,7 @@ Malachite --o Copper
 
 
 ' Crafting -->
+SugarCane --> Sugar
 Scoria --> DarkScoria
 Charcoal --> CalamineMix
 RawCalamine --> CalamineMix
