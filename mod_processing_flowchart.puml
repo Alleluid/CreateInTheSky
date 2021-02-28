@@ -30,7 +30,6 @@ object Gravel
 object Sand
 object LimeSand
 object Limestone
-object WeatheredLimestone
 object Dirt
 object SoulSand
 
@@ -38,6 +37,7 @@ object SoulSand
 object OakTree
 object Wood
 object Sapling
+object PlantBall
 object Wheat
 object Bonemeal
 object Charcoal
@@ -50,12 +50,19 @@ object Egg
 object Milk
 
 ' Minerals
-object Iron
-object Clay
-object NetherQuartz
-object Gold
 object Zinc
 object Copper
+Zinc : Unlocks Washing
+Zinc .. Washing
+package Washing {
+    object Iron
+    Iron : Unlocks Pressing + Mixer
+    object Clay
+    object NetherQuartz
+    object Gold
+    object WeatheredLimestone
+}
+
 
 ' Misc
 object CalamineMix
@@ -67,9 +74,6 @@ object Cardstock {
  Mob drops
 }
 
-' Machine
-diamond Mixer
-
 'Arrows
 
 ' Blocks from Fluids and other misc interactions
@@ -80,20 +84,20 @@ Water .. Andesite
 Lava .. ScoriaCobblestone
 Chocolate .. ScoriaCobblestone
 
-OakTree ...... Wood
+OakTree .. Wood
 OakTree .. Sapling
 OakTree .. JungleLeaves : ???
 Bonemeal .. Wheat : Grass
 Bonemeal .. Kelp : Seagrass
 WoodPulp .. Cardstock : Press
 
-Egg .. Mixer
-Milk .. Mixer
-CocoaBeans .. Mixer
-Mixer .. Chocolate : Mixer
+Egg .. Chocolate
+Milk .. Chocolate
+CocoaBeans .. Chocolate
+Chocolate : Mixer
 
 ' Milling --*
-Cobblestone --* Gravel
+Cobblestone ---* Gravel
 Gravel --* Sand
 Sand --* LimeSand
 Limestone --* RawCalamine
@@ -102,6 +106,7 @@ DarkScoria --* SoulSand
 Wood --* SawDust
 JungleLeaves --* CocoaBeans
 WeatheredLimestone --* Malachite
+PlantBall --* Dirt
 
 ' Washing --|>
 Gravel --|> Iron
@@ -125,8 +130,8 @@ Malachite --o Copper
 Scoria --> DarkScoria
 Charcoal --> CalamineMix
 RawCalamine --> CalamineMix
-Wheat --> Dirt
-Sapling --> Dirt
+Wheat --> PlantBall
+Sapling --> PlantBall
 
 hide empty attributes
 
