@@ -11,11 +11,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
+import java.util.HashMap;
 import java.util.Random;
 
 public class BlockMobEgg extends Block {
@@ -54,6 +56,12 @@ public class BlockMobEgg extends Block {
             "minecraft:zombified_piglin"
     };
 
+    private static final HashMap<ResourceLocation, String[]> entitiesMap = new HashMap<>();
+    static {
+        entitiesMap.put(DimensionType.OVERWORLD_ID, overworldHostileEntities);
+        entitiesMap.put(DimensionType.THE_NETHER_ID, netherHostileEntities);
+    }
+
     public BlockMobEgg() {
         super(AbstractBlock.Properties.create(Material.DRAGON_EGG)
                 .hardnessAndResistance(1f)
@@ -68,27 +76,25 @@ public class BlockMobEgg extends Block {
         Random random = worldIn.getRandom();
         CompoundNBT compoundNBT = new CompoundNBT();
 
-        int idx = 0;
-        String entityString = "";
-        if (worldIn.getDimensionKey().getRegistryName() == DimensionType.OVERWORLD_ID) {
-            idx = random.nextInt(overworldHostileEntities.length);
-            entityString = overworldHostileEntities[idx];
-        } else if (worldIn.getDimensionKey().getRegistryName() == DimensionType.THE_NETHER_ID) {
-            idx = random.nextInt(netherHostileEntities.length);
-            entityString = netherHostileEntities[idx];
-        }
-        compoundNBT.putString("id", entityString);
-        Entity entity = EntityType.loadEntityAndExecute(compoundNBT, worldIn, (entity1) -> {
-            entity1.setLocationAndAngles(pos.getX()+0.5f, pos.getY()+0.5f, pos.getZ()+0.5f, entity1.rotationYaw, entity1.rotationPitch);
-            return entity1;
-        });
-        worldIn.addEntity(entity);
-        MinecraftServer server = player.getServer();
-        if (server != null && entity instanceof MobEntity) {
-            ((MobEntity) entity).onInitialSpawn(server.getWorld(player.world.getDimensionKey()), worldIn.getDifficultyForLocation(entity.getPosition()),
-                    SpawnReason.COMMAND,
-                    (ILivingEntityData)null, (CompoundNBT)null
-        );
+        String[] entities = entitiesMap.get(worldIn.getDimensionKey().getLocation());
+        if (entities != null) {
+            int idx = random.nextInt(entities.length);
+            String entityString = entities[idx];
+
+            compoundNBT.putString("id", entityString);
+            Entity entity = EntityType.loadEntityAndExecute(compoundNBT, worldIn, (entity1) -> {
+                entity1.setLocationAndAngles(pos.getX()+0.5f, pos.getY()+0.5f, pos.getZ()+0.5f, entity1.rotationYaw, entity1.rotationPitch);
+                return entity1;
+            });
+            worldIn.addEntity(entity);
+
+            MinecraftServer server = player.getServer();
+            if (server != null && entity instanceof MobEntity) {
+                ((MobEntity) entity).onInitialSpawn(server.getWorld(player.world.getDimensionKey()), worldIn.getDifficultyForLocation(entity.getPosition()),
+                        SpawnReason.COMMAND,
+                        (ILivingEntityData)null, (CompoundNBT)null
+                );
+            }
         }
         super.harvestBlock(worldIn, player, pos, state, te, stack);
     }
