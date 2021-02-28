@@ -12,28 +12,23 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.DimensionType;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 import java.util.Random;
 
 public class BlockMobEgg extends Block {
-    private static final String[] hostileEntities = { // TODOCONFIG
-            "minecraft:blaze",
+    private static final String[] overworldHostileEntities = { // TODOCONFIG
             "minecraft:cave_spider",
             "minecraft:creeper",
             "minecraft:drowned",
             "minecraft:guardian",
             "minecraft:elder_guardian",
             "minecraft:enderman",
-            "minecraft:ghast",
-            "minecraft:hoglin",
             "minecraft:husk",
             "minecraft:illusioner",
-            "minecraft:magma_cube",
             "minecraft:phantom",
-            "minecraft:piglin",
-            "minecraft:piglin_brute",
             "minecraft:pillager",
             "minecraft:shulker",
             "minecraft:silverfish",
@@ -43,10 +38,19 @@ public class BlockMobEgg extends Block {
             "minecraft:stray",
             "minecraft:vindicator",
             "minecraft:witch",
-            "minecraft:wither_skeleton",
-            "minecraft:zoglin",
             "minecraft:zombie",
             "minecraft:zombie_villager",
+    };
+
+    private static final String[] netherHostileEntities = {
+            "minecraft:blaze",
+            "minecraft:ghast",
+            "minecraft:hoglin",
+            "minecraft:magma_cube",
+            "minecraft:piglin",
+            "minecraft:piglin_brute",
+            "minecraft:wither_skeleton",
+            "minecraft:zoglin",
             "minecraft:zombified_piglin"
     };
 
@@ -63,8 +67,16 @@ public class BlockMobEgg extends Block {
     public void harvestBlock(World worldIn, PlayerEntity player, BlockPos pos, BlockState state, @Nullable TileEntity te, ItemStack stack) {
         Random random = worldIn.getRandom();
         CompoundNBT compoundNBT = new CompoundNBT();
-        int idx = random.nextInt(hostileEntities.length);
-        String entityString = hostileEntities[idx];
+
+        int idx = 0;
+        String entityString = "";
+        if (worldIn.getDimensionKey().getRegistryName() == DimensionType.OVERWORLD_ID) {
+            idx = random.nextInt(overworldHostileEntities.length);
+            entityString = overworldHostileEntities[idx];
+        } else if (worldIn.getDimensionKey().getRegistryName() == DimensionType.THE_NETHER_ID) {
+            idx = random.nextInt(netherHostileEntities.length);
+            entityString = netherHostileEntities[idx];
+        }
         compoundNBT.putString("id", entityString);
         Entity entity = EntityType.loadEntityAndExecute(compoundNBT, worldIn, (entity1) -> {
             entity1.setLocationAndAngles(pos.getX()+0.5f, pos.getY()+0.5f, pos.getZ()+0.5f, entity1.rotationYaw, entity1.rotationPitch);
