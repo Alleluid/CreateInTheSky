@@ -8,22 +8,22 @@
       "item": "minecraft:wheat"
     },
     {
-      "item": "minecraft:oak_leaves"
+      "item": "minecraft:leaves"
     },
     {
-      "item": "minecraft:oak_leaves"
+      "tag": "minecraft:leaves"
     },
     {
-      "item": "minecraft:oak_leaves"
+      "tag": "minecraft:leaves"
     },
     {
-      "item": "minecraft:oak_leaves"
+      "tag": "minecraft:leaves"
     },
     {
-      "item": "minecraft:oak_leaves"
+      "tag": "minecraft:leaves"
     },
     {
-      "item": "minecraft:oak_leaves"
+      "tag": "minecraft:leaves"
     }
   ],
   "result": {

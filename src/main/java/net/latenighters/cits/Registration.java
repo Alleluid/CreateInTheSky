@@ -10,10 +10,7 @@ import net.latenighters.cits.common.blocks.BlockSteamputer;
 import net.latenighters.cits.common.blocks.jukebox.BlockJukebox;
 import net.latenighters.cits.common.blocks.jukebox.RendererJukebox;
 import net.latenighters.cits.common.blocks.jukebox.TileJukebox;
-import net.latenighters.cits.common.items.ItemCardstock;
-import net.latenighters.cits.common.items.ItemMortarPestle;
-import net.latenighters.cits.common.items.ItemPuncher;
-import net.latenighters.cits.common.items.ItemSkyTool;
+import net.latenighters.cits.common.items.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.fluid.Fluid;
@@ -52,6 +49,7 @@ public class Registration {
     public static final RegistryObject<ItemCardstock> CARDSTOCK = ITEMS.register("cardstock", ItemCardstock::new);
     public static final RegistryObject<ItemMortarPestle> MORTAR_PESTLE = ITEMS.register("mortar_pestle", ItemMortarPestle::new);
     public static final RegistryObject<ItemSkyTool> SKYTOOL = ITEMS.register("skytool", ItemSkyTool::new);
+    public static final RegistryObject<ItemPlantBall> PLANT_BALL = ITEMS.register("plant_ball", ItemPlantBall::new);
     public static final RegistryObject<Item> BRASS_GEAR = ITEMS.register("brass_gear", () ->
             new Item(new Item.Properties().group(ModSetup.ITEM_GROUP))
     );
@@ -68,9 +66,6 @@ public class Registration {
             new Item(new Item.Properties().group(ModSetup.ITEM_GROUP))
     );
     public static final RegistryObject<Item> MALACHITE = ITEMS.register("malachite", () ->
-            new Item(new Item.Properties().group(ModSetup.ITEM_GROUP))
-    );
-    public static final RegistryObject<Item> PLANT_BALL = ITEMS.register("plant_ball", () ->
             new Item(new Item.Properties().group(ModSetup.ITEM_GROUP))
     );
 
