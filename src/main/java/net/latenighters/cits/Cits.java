@@ -2,8 +2,8 @@ package net.latenighters.cits;
 
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.repack.registrate.util.NonNullLazyValue;
+import net.latenighters.cits.common.world.SkyBlockWorldEvents;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -45,9 +45,7 @@ public class Cits
 
     private void setup(final FMLCommonSetupEvent event)
     {
-        // some preinit code
-        LOGGER.info("HELLO FROM PREINIT");
-        LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+        MinecraftForge.EVENT_BUS.addListener(SkyBlockWorldEvents::onPlayerJoin);
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {

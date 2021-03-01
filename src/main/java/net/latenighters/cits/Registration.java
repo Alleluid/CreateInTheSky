@@ -11,12 +11,14 @@ import net.latenighters.cits.common.blocks.jukebox.BlockJukebox;
 import net.latenighters.cits.common.blocks.jukebox.RendererJukebox;
 import net.latenighters.cits.common.blocks.jukebox.TileJukebox;
 import net.latenighters.cits.common.items.*;
+import net.latenighters.cits.common.world.WorldTypeSkyblock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntityType;
+import net.minecraftforge.common.world.ForgeWorldType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
@@ -31,6 +33,7 @@ public class Registration {
     private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
     private static final DeferredRegister<TileEntityType<?>> TILES = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, MOD_ID);
     private static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, MOD_ID);
+    private static final DeferredRegister<ForgeWorldType> WORLD_TYPES = DeferredRegister.create(ForgeRegistries.WORLD_TYPES, MOD_ID);
 
     private static final CreateRegistrate REGISTRATE = Cits.registrate()
             .itemGroup(() -> Create.baseCreativeTab);
@@ -40,6 +43,7 @@ public class Registration {
         ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         TILES.register(FMLJavaModLoadingContext.get().getModEventBus());
         FLUIDS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        WORLD_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
         MobCardHandler.mobCardsInit(ITEMS);
     }
 
@@ -83,6 +87,9 @@ public class Registration {
     // Tile Entity Registration
 //    public static final RegistryObject<TileEntityType<TileGeodeMachine>> GEODE_MACHINE_TILE = TILES.register("geode_machine_tile", () -> TileEntityType.Builder.create(TileGeodeMachine::new, GEODE_MACHINE_BLOCK.get()).build(null));
 //    public static final RegistryObject<TileEntityType<TileJukebox>> JUKEBOX_TILE = TILES.register("jukebox_tile", () -> TileEntityType.Builder.create(TileJukebox::new, JUKEBOX_BLOCK.get()).build(null));
+
+    // World Type Registration
+    public static final RegistryObject<WorldTypeSkyblock> SKYBLOCK_WORLD_TYPE = WORLD_TYPES.register("createinthesky", WorldTypeSkyblock::new);
 
     //Create Block Registration
     public static final BlockEntry<BlockJukebox> JUKEBOX_BLOCK =
