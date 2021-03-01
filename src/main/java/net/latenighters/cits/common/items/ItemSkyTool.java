@@ -83,6 +83,9 @@ public class ItemSkyTool extends PickaxeItem {
         if (blockState.getBlock() == Blocks.END_PORTAL_FRAME) {
             context.getWorld().removeBlock(context.getPos(), false);
             context.getWorld().playEvent(2001, context.getPos(), Block.getStateId(blockState));
+        } else if (blockState.getBlock() == Blocks.OBSIDIAN) {
+            context.getWorld().setBlockState(context.getPos(), Blocks.LAVA.getDefaultState(), 3);
+            context.getWorld().playEvent(2001, context.getPos(), Block.getStateId(blockState));
         }
         return super.onItemUse(context);
     }
