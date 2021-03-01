@@ -1,16 +1,16 @@
 package net.latenighters.cits.common.items;
 
 import net.latenighters.cits.ModSetup;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.PickaxeItem;
+import net.minecraft.item.*;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.util.ActionResultType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -75,5 +75,15 @@ public class ItemSkyTool extends PickaxeItem {
         }
         return true;
 
+    }
+
+    @Override
+    public ActionResultType onItemUse(ItemUseContext context) {
+        BlockState blockState = context.getWorld().getBlockState(context.getPos());
+        if (blockState.getBlock() == Blocks.END_PORTAL_FRAME) {
+            context.getWorld().removeBlock(context.getPos(), false);
+            context.getWorld().playEvent(2001, context.getPos(), Block.getStateId(blockState));
+        }
+        return super.onItemUse(context);
     }
 }
