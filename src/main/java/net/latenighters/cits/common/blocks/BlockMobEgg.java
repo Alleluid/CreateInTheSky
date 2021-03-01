@@ -22,6 +22,7 @@ import java.util.Random;
 
 public class BlockMobEgg extends Block {
     private static final String[] overworldHostileEntities = { // TODOCONFIG
+            "minecraft:blaze",
             "minecraft:cave_spider",
             "minecraft:creeper",
             "minecraft:drowned",
