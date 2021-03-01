@@ -8,6 +8,14 @@ object ResourcesToAdd {
  SugarCane
 }
 
+map Legend {
+ --> => Crafting
+ --o => Smelting
+ --|> => Washing
+ --* => Milling
+ ..> => Other
+}
+
 'Objects
 ' Fluids
 object Lava
@@ -24,15 +32,17 @@ object Andesite {
 object ScoriaCobblestone
 object NaturalScoria
 object Scoria
-object DarkScoria {
-    Black Dye
-}
+object DarkScoria
 object Gravel
 object Sand
+object RedSand
 object LimeSand
 object Limestone
 object Dirt
 object SoulSand
+object Blackstone
+object GildedBlackstone
+object Terracotta
 
 ' Plants
 object OakTree
@@ -50,53 +60,61 @@ object Sugar
 
 ' Mobs
 object Milk
+object Egg
 
 ' Minerals
 object Zinc
 object Copper
 Zinc : Unlocks Washing
 Zinc .. Washing
-package Washing {
+'package Washing {
     object Iron
     Iron : Unlocks Pressing + Mixer
     object Clay
     object NetherQuartz
     object Gold
     object WeatheredLimestone
-}
+'}
 
 
 ' Misc
+object BlackDye
 object CalamineMix
 object RawCalamine
 object Malachite
 object SawDust
 object WoodPulp
-object Cardstock {
- Mob drops
-}
+object Cardstock
+object WeirdEgg
+
+object MobDrops
 
 'Arrows
 
 ' Blocks from Fluids and other misc interactions
-Lava .. Cobblestone
-Water .. Cobblestone
-Lava .. Andesite
-Water .. Andesite
-Lava .. ScoriaCobblestone
-Chocolate .. ScoriaCobblestone
+Lava ..> Cobblestone
+Water ..> Cobblestone
+Lava ..> Andesite
+Water ..> Andesite
+Lava ..> ScoriaCobblestone
+Chocolate ..> ScoriaCobblestone
 
-OakTree .. Wood
-OakTree .. Sapling
-OakTree .. JungleLeaves : ???
-Bonemeal .. Wheat : Grass
-Bonemeal .. Kelp : Seagrass
-WoodPulp .. Cardstock : Press
+OakTree ..> Wood
+OakTree ..> Sapling
+Bonemeal ..> Wheat : Grass
+Bonemeal ..> Kelp : Seagrass
+WoodPulp ..> Cardstock : Press
 
-Sugar .. Chocolate
-Milk .. Chocolate
-CocoaBeans .. Chocolate
+Sugar ..> Chocolate
+Milk ..> Chocolate
+CocoaBeans ..> Chocolate
 Chocolate : Mixer
+
+WeirdEgg ..> MobDrops
+Cardstock ..> MobDrops
+
+Sapling ..> JungleLeaves
+PlantBall ..> JungleLeaves
 
 ' Milling --*
 Cobblestone ---* Gravel
@@ -104,11 +122,13 @@ Gravel --* Sand
 Sand --* LimeSand
 Limestone --* RawCalamine
 LimeSand --* Bonemeal
+Charcoal --* BlackDye
 DarkScoria --* SoulSand
 Wood --* SawDust
 JungleLeaves --* CocoaBeans
 WeatheredLimestone --* Malachite
 PlantBall --* Dirt
+Terracotta --* RedSand
 
 ' Washing --|>
 Gravel --|> Iron
@@ -117,6 +137,7 @@ SoulSand --|> NetherQuartz
 SoulSand --|> Gold
 SawDust --|> WoodPulp
 Limestone --|> WeatheredLimestone
+RedSand --|> Gold
 
 
 ' Smelting --o
@@ -126,15 +147,23 @@ NaturalScoria --o Scoria
 LimeSand --o Limestone
 CalamineMix --o Zinc
 Malachite --o Copper
+Clay --o Terracotta
 
 
 ' Crafting -->
 SugarCane --> Sugar
+BlackDye --> DarkScoria
 Scoria --> DarkScoria
 Charcoal --> CalamineMix
 RawCalamine --> CalamineMix
 Wheat --> PlantBall
 Sapling --> PlantBall
+Cobblestone --> Blackstone
+Charcoal --> Blackstone
+Gold --> GildedBlackstone
+Blackstone --> GildedBlackstone
+GildedBlackstone --> WeirdEgg
+Egg --> WeirdEgg
 
 hide empty attributes
 
