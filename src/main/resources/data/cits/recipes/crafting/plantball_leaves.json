@@ -8,7 +8,10 @@
       "item": "minecraft:wheat"
     },
     {
-      "item": "minecraft:leaves"
+      "item": "minecraft:wheat"
+    },
+    {
+      "tag": "minecraft:leaves"
     },
     {
       "tag": "minecraft:leaves"
@@ -28,6 +31,6 @@
   ],
   "result": {
     "item": "cits:plant_ball",
-    "count": 1
+    "count": 2
   }
 }
