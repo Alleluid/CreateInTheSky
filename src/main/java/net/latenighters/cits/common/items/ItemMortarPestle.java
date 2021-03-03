@@ -28,17 +28,17 @@ public class ItemMortarPestle extends Item {
     @Nonnull
     public ActionResult<ItemStack> onItemRightClick(@Nonnull World worldIn, PlayerEntity playerIn, @Nonnull Hand handIn) {
         // TODO: Polish this up to be like sandpaper.
+        Hand otherHand = handIn == Hand.MAIN_HAND ? Hand.OFF_HAND : Hand.MAIN_HAND;
+        ItemStack itemInOtherHand = playerIn.getHeldItem(otherHand);
 
-        ItemStack itemInOffHand = playerIn.getHeldItem(Hand.OFF_HAND);
-
-        boolean recipeResult = preformRecipe(worldIn, playerIn, itemInOffHand);
+        boolean recipeResult = performRecipe(worldIn, playerIn, itemInOtherHand);
         if (recipeResult)
-            itemInOffHand.setCount(0);
+            itemInOtherHand.setCount(0);
 
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }
 
-    public boolean preformRecipe(World worldIn, PlayerEntity playerIn, ItemStack inputStack) {
+    public boolean performRecipe(World worldIn, PlayerEntity playerIn, ItemStack inputStack) {
         NonNullList<ItemStack> recipeResultItems = NonNullList.create();
         RecipeWrapper recipeWrapper = new MillingInv(inputStack);
         Optional<MillingRecipe> recipe = AllRecipeTypes.MILLING.find(recipeWrapper, worldIn);
