@@ -1,5 +1,5 @@
 {
-  "type": "create:milling",
+  "type": "create:mixing",
   "ingredients": [
     {
       "item": "create:weathered_limestone"
