@@ -1,9 +1,6 @@
 package net.latenighters.cits.common.blocks;
 
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.SoundType;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.*;
 import net.minecraft.entity.player.PlayerEntity;
@@ -17,8 +14,7 @@ import net.minecraft.world.DimensionType;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
-import java.util.HashMap;
-import java.util.Random;
+import java.util.*;
 
 public class BlockMobEgg extends Block {
     private static final String[] overworldHostileEntities = { // TODOCONFIG
@@ -57,6 +53,16 @@ public class BlockMobEgg extends Block {
             "minecraft:zombified_piglin"
     };
 
+    private static final ArrayList<Block> hotBlocks = new ArrayList<>(Arrays.asList(
+            Blocks.TORCH,
+            Blocks.MAGMA_BLOCK,
+            Blocks.LAVA,
+            Blocks.FIRE,
+            Blocks.SOUL_FIRE,
+            Blocks.CAMPFIRE,
+            Blocks.SOUL_CAMPFIRE
+    ));
+
     private static final HashMap<ResourceLocation, String[]> entitiesMap = new HashMap<>();
     static {
         entitiesMap.put(DimensionType.OVERWORLD_ID, overworldHostileEntities);
@@ -64,9 +70,9 @@ public class BlockMobEgg extends Block {
     }
 
     public BlockMobEgg() {
-        super(AbstractBlock.Properties.create(Material.DRAGON_EGG)
+        super(AbstractBlock.Properties.create(Material.ROCK)
                 .hardnessAndResistance(1f)
-                .sound(SoundType.FUNGUS)
+                .sound(SoundType.GILDED_BLACKSTONE)
                 .noDrops()
                 .notSolid()
         );
@@ -81,6 +87,10 @@ public class BlockMobEgg extends Block {
         if (entities != null) {
             int idx = random.nextInt(entities.length);
             String entityString = entities[idx];
+
+            if (hotBlocks.contains(worldIn.getBlockState(pos.down()).getBlock())) {
+                entityString = "minecraft:blaze";
+            }
 
             compoundNBT.putString("id", entityString);
             Entity entity = EntityType.loadEntityAndExecute(compoundNBT, worldIn, (entity1) -> {
