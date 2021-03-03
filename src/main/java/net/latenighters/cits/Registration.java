@@ -72,6 +72,9 @@ public class Registration {
     public static final RegistryObject<Item> MALACHITE = ITEMS.register("malachite", () ->
             new Item(new Item.Properties().group(ModSetup.ITEM_GROUP))
     );
+    public static final RegistryObject<Item> CARNELIAN = ITEMS.register("carnelian", () ->
+            new Item(new Item.Properties().group(ModSetup.ITEM_GROUP))
+    );
 
 
     // Fluid Registration
