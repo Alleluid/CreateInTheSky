@@ -54,6 +54,7 @@ public class Registration {
     public static final RegistryObject<ItemMortarPestle> MORTAR_PESTLE = ITEMS.register("mortar_pestle", ItemMortarPestle::new);
     public static final RegistryObject<ItemSkyTool> SKYTOOL = ITEMS.register("skytool", ItemSkyTool::new);
     public static final RegistryObject<ItemPlantBall> PLANT_BALL = ITEMS.register("plant_ball", ItemPlantBall::new);
+    public static final RegistryObject<ItemSoylent> SOYLENT = ITEMS.register("soylent", ItemSoylent::new);
     public static final RegistryObject<Item> BRASS_GEAR = ITEMS.register("brass_gear", () ->
             new Item(new Item.Properties().group(ModSetup.ITEM_GROUP))
     );
