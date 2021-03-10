@@ -18,7 +18,6 @@ import java.util.*;
 
 public class BlockMobEgg extends Block {
     private static final String[] overworldHostileEntities = { // TODOCONFIG
-            "minecraft:blaze",
             "minecraft:cave_spider",
             "minecraft:creeper",
             "minecraft:drowned",
@@ -39,6 +38,7 @@ public class BlockMobEgg extends Block {
             "minecraft:witch",
             "minecraft:zombie",
             "minecraft:zombie_villager",
+            "minecraft:chicken"
     };
 
     private static final String[] netherHostileEntities = {
